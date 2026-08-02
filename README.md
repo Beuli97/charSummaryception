@@ -59,7 +59,8 @@ See [Tips](#tips) for what works well in practice.
 - The **group icon** in each message's button row opens the perception drawer for that message.
 - The drawer shows every other character (Current Member) in the chat with two checkboxes each: **Sees** and **Hears**.
 - All boxes checked = everyone perceives it (the default). 
-- Unchecking a box hides the message from that character's memory. 
+- Unchecking **both** boxes hides the message entirely from that character's memory.
+- Unchecking **one** box leaves that character on a single channel (see-only or hear-only). A LLM call splits the message, and only the matching slice is summarized.
 - A perception button with a colored dot indicates the message has a non-default audience.
 - The drawer's **Reset** button restores the current message to the default (everyone perceives).
 - The Diagnostics tab's **Reset Perception** button restores *all* messages in the chat to the default.
