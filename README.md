@@ -8,26 +8,26 @@ Each character in a chat gets their own memory file containing only what they ac
 ## What it does
 
 CharSummaryception periodically uses an LLM to summarize recent messages into memory bullets stored in each character's Data Bank.
-Summary quality depends heavily on the model — see [Tips](#tips) for recommendations.
+Summary quality depends heavily on the model - see [Tips](#tips) for recommendations.
 
 
 
 ## Key features
 
-- **Perception drawer** — A side drawer that opens per-message and lets you toggle which characters saw or heard that message.
-- **Partial perception (See / Hear)** — When a witness can see but not hear a message (or vice versa), the LLM extracts only the visible or audible parts so the witness's memory reflects just that channel.
-- **Perception inheritance** — A new message from the same speaker inherits the last state of the most recent prior message from the same character.
-- **Layered compression** — Memory bullets are organized in layers. Layer 0 holds fresh summaries, each higher layer is a more compressed merge of older ones.
-- **Prompt presets** — Each ships dedicated Layer 0 (extraction) and Layer 1 (compression) prompts.
-- **Per-layer prompt editor** — Edit the system and user prompts for Layer 0, Layer 1, and (optionally) Layer 2+ overrides.
-- **Per-character memory files** — Each character gets a memory file in their Data Bank.
-- **Snippet browser** — Browse, edit, add, delete, and protect individual bullets across all layers. Promote selected bullets to a higher layer manually.
-- **Data Bank browser** — View, import, export, and delete Data Bank files attached to any character.
-- **Backlog catch-up dialog** — When you trigger Summarize Now on a chat with a large unsummarized backlog, choose to process everything, process one batch, or skip the backlog entirely.
-- **LLM connections** — Use SillyTavern's active connection (Default), an OpenAI-compatible endpoint, or OpenRouter directly.
-- **Group chat support** — Each group member gets their own memory file, extracted in a single pass.
-- **Vector Storage compatible** — Memory files are stored as readable, editable markdown with `<memory>` tags. Vector Storage indexes them and retrieves relevant bullets at generation time.
-- **Non-destructive** — Original messages are never modified or ghosted, they stay visible for Vector Storage to index.
+- **Perception drawer** - A side drawer that opens per-message and lets you toggle which characters saw or heard that message.
+- **Partial perception (See / Hear)** - When a witness can see but not hear a message (or vice versa), the LLM extracts only the visible or audible parts so the witness's memory reflects just that channel.
+- **Perception inheritance** - A new message from the same speaker inherits the last state of the most recent prior message from the same character.
+- **Layered compression** - Memory bullets are organized in layers. Layer 0 holds fresh summaries, each higher layer is a more compressed merge of older ones.
+- **Prompt presets** - Each ships dedicated Layer 0 (extraction) and Layer 1 (compression) prompts.
+- **Per-layer prompt editor** - Edit the system and user prompts for Layer 0, Layer 1, and (optionally) Layer 2+ overrides.
+- **Per-character memory files** - Each character gets a memory file in their Data Bank.
+- **Snippet browser** - Browse, edit, add, delete, and protect individual bullets across all layers. Promote selected bullets to a higher layer manually.
+- **Data Bank browser** - View, import, export, and delete Data Bank files attached to any character.
+- **Backlog catch-up dialog** - When you trigger Summarize Now on a chat with a large unsummarized backlog, choose to process everything, process one batch, or skip the backlog entirely.
+- **LLM connections** - Use SillyTavern's active connection (Default), an OpenAI-compatible endpoint, or OpenRouter directly.
+- **Group chat support** - Each group member gets their own memory file, extracted in a single pass.
+- **Vector Storage compatible** - Memory files are stored as readable, editable markdown with `<memory>` tags. Vector Storage indexes them and retrieves relevant bullets at generation time.
+- **Non-destructive** - Original messages are never modified or ghosted, they stay visible for Vector Storage to index.
 
 
 
@@ -75,8 +75,8 @@ See [Tips](#tips) for what works well in practice.
 
 ## Tips
 
-- **Summarizer model** — quality depends heavily on the model. Gemma4 31B or Deepseek 4 Flash, both with reasoning, doing a great Job for summaries.
-- **Vector Storage source** — jina-embeddings-v3 (via llama.cpp) works well. Local Transformers is fine for a quick start.
+- **Summarizer model** - quality depends heavily on the model. Gemma4 31B or Deepseek 4 Flash, both with reasoning, doing a great Job for summaries in my case.
+- **Vector Storage source** - jina-embeddings-v3 works well for me. Local Transformers is fine for a quick start.
 
 
 
