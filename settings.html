@@ -1,0 +1,61 @@
+<div class="charSummary_settings">
+    <div class="inline-drawer">
+        <div class="inline-drawer-toggle inline-drawer-header">
+            <b>CharSummaryception</b>
+            <span id="charSummary_openSettings" class="charSummary_headerGear" title="Open Settings">
+                <i class="fa-solid fa-gear fa-sm"></i>
+            </span>
+            <span id="charSummary_openSceneState" class="charSummary_headerGear" title="Open Scene State — control who can see and hear each message">
+                <i class="fa-solid fa-users fa-sm"></i>
+            </span>
+            <div class="inline-drawer-icon fa-solid fa-circle-chevron-down down"></div>
+        </div>
+        <div class="inline-drawer-content">
+
+            <!-- Stats bar -->
+            <div class="charSummary_statsBar">
+                <div class="charSummary_statItem" title="Memory file in use (one per character, or one per group member)">
+                    <i class="fa-solid fa-file-lines fa-sm"></i>
+                    <span id="charSummary_statFile">No character</span>
+                </div>
+                <div class="charSummary_statItem" title="Total memory bullets across this character's files">
+                    <i class="fa-solid fa-brain fa-sm"></i>
+                    <span id="charSummary_statCount">0 memories</span>
+                </div>
+                <div class="charSummary_statItem" title="Messages since last summarization → batch size threshold">
+                    <i class="fa-solid fa-arrows-rotate fa-sm"></i>
+                    <span id="charSummary_statProgress">0/10 msgs</span>
+                </div>
+            </div>
+
+            <!-- Primary Controls -->
+            <div class="charSummary_dashSection">
+                <div class="charSummary_buttonRow">
+                    <input type="button" id="charSummary_summarizeNow" class="menu_button" value="Summarize Now" title="Run summarization on unprocessed messages (choose range)" />
+                    <input type="button" id="charSummary_stopSummarize" class="menu_button" value="Stop" title="Abort summarization" style="display:none;" />
+                    <button id="charSummary_autoPill" class="charSummary_autoPill" title="Turn automatic summarization on or off">
+                        <i class="fa-solid fa-arrows-rotate fa-xs"></i> Auto
+                    </button>
+                </div>
+            </div>
+
+            <!-- Tools -->
+            <div class="charSummary_dashSection">
+                <small class="charSummary_sectionLabel">Tools</small>
+                <div class="charSummary_buttonRow">
+                    <input type="button" id="charSummary_dataBankBtn" class="menu_button" value="Data Bank" title="Browse each character's memory files" />
+                    <input type="button" id="charSummary_snippetBtn" class="menu_button" value="Snippets" title="Browse and edit individual memory bullets" />
+                </div>
+            </div>
+
+            <!-- Activity -->
+            <div class="charSummary_dashSection">
+                <small class="charSummary_sectionLabel">Activity</small>
+                <div id="charSummary_dashActivity" class="charSummary_dashActivity">
+                    <div class="charSummary_diagEmpty">No activity yet.</div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
