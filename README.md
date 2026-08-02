@@ -86,3 +86,5 @@ CharSummaryception adapts code from:
 
 - **[Summaryception](https://github.com/Lodactio/Extension-Summaryception)** by Lodactio
 - **[CharMemory](https://github.com/bal-spec/sillytavern-character-memory)** by bal-spec
+
+This Project was mostly Vibe Coded / AI Generated
