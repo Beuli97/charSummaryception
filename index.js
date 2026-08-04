@@ -109,6 +109,7 @@ const defaultSettings = {
     ],
 
     connectionSource: 'default',
+    connectionProfileId: '',
     openaiUrl: '',
     openaiKey: '',
     openaiModel: '',
@@ -1846,6 +1847,7 @@ async function showSettingsModal() {
 
     const sourceOptions = [
         { value: 'default', label: 'Default (Main API)' },
+        { value: 'profile', label: 'Connection Profile' },
         { value: 'openai', label: 'OpenAI Compatible' },
         { value: 'openrouter', label: 'OpenRouter' },
     ].map(o => `<option value="${o.value}" ${o.value === s.connectionSource ? 'selected' : ''}>${o.label}</option>`).join('');
@@ -2111,6 +2113,7 @@ async function showSettingsModal() {
         if ($('#csc_conn_openrouterModel').length) captured.conn.openrouterModel = $('#csc_conn_openrouterModel').val() || '';
         if ($('#csc_conn_openrouterMaxTokens').length) captured.conn.openrouterMaxTokens = Number($('#csc_conn_openrouterMaxTokens').val()) || 0;
         if ($('#csc_conn_openrouterReasoning').length) captured.conn.openrouterReasoning = $('#csc_conn_openrouterReasoning').val() || '';
+        if ($('#csc_conn_profile').length) captured.conn.connectionProfileId = $('#csc_conn_profile').val() || '';
         captured.snapshotTaken = true;
     };
 
@@ -2179,6 +2182,7 @@ async function showSettingsModal() {
     if (captured.conn.openrouterModel !== undefined) s.openrouterModel = captured.conn.openrouterModel;
     if (captured.conn.openrouterMaxTokens !== undefined) s.openrouterMaxTokens = captured.conn.openrouterMaxTokens;
     if (captured.conn.openrouterReasoning !== undefined) s.openrouterReasoning = captured.conn.openrouterReasoning;
+    if (captured.conn.connectionProfileId !== undefined) s.connectionProfileId = captured.conn.connectionProfileId;
 
     s.debugMode = captured.debugMode;
     s.traceMode = captured.traceMode;
