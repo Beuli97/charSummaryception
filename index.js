@@ -1624,18 +1624,48 @@ function persistSceneDrawerEdits() {
     logActivity(`Perception updated for message #${drawerMessageId + 1} (${Object.keys(perception).length} entries)`);
 }
 
+function applyDrawerPosition() {
+    const $drawer = $('#charSummary_sceneDrawer');
+    if (!$drawer.length || !$drawer.hasClass('open')) return;
+    const topBar = document.getElementById('top-settings-holder');
+    const topOffset = topBar ? topBar.getBoundingClientRect().bottom : 0;
+    const vh = window.visualViewport ? window.visualViewport.height : window.innerHeight;
+    $drawer.css({
+        top: topOffset + 'px',
+        height: (vh - topOffset) + 'px',
+    });
+}
+
+let drawerResizeHandler = null;
+let drawerViewportHandler = null;
+
 function toggleSceneDrawer() {
     const $drawer = $('#charSummary_sceneDrawer');
     const isOpen = $drawer.hasClass('open');
     const shouldOpen = !isOpen;
 
     if (shouldOpen) {
-        const topBar = document.getElementById('top-settings-holder');
-        if (topBar) {
-            const topOffset = topBar.getBoundingClientRect().bottom;
-            $drawer.css({ top: topOffset + 'px', height: `calc(100vh - ${topOffset}px)` });
-        }
+        applyDrawerPosition();
         renderSceneDrawerBody();
+        if (!drawerResizeHandler) {
+            drawerResizeHandler = () => applyDrawerPosition();
+            window.addEventListener('resize', drawerResizeHandler);
+            window.addEventListener('orientationchange', drawerResizeHandler);
+        }
+        if (window.visualViewport && !drawerViewportHandler) {
+            drawerViewportHandler = () => applyDrawerPosition();
+            window.visualViewport.addEventListener('resize', drawerViewportHandler);
+        }
+    } else {
+        if (drawerResizeHandler) {
+            window.removeEventListener('resize', drawerResizeHandler);
+            window.removeEventListener('orientationchange', drawerResizeHandler);
+            drawerResizeHandler = null;
+        }
+        if (drawerViewportHandler && window.visualViewport) {
+            window.visualViewport.removeEventListener('resize', drawerViewportHandler);
+            drawerViewportHandler = null;
+        }
     }
 
     $drawer.toggleClass('open', shouldOpen);
